@@ -28,7 +28,7 @@ module Kitchen
 				class ContainerTest < Minitest::Test
 					def setup
 						@subj = Lxd::Container.new(::Logger.new(StringIO.new), container: 'kitchen-lxd-test',
-							image: 'alpine/3.6', binary: 'lxc', remote: 'images')
+							image: 'alpine/3.11', binary: 'lxc', remote: 'images')
 					end
 
 					def teardown
@@ -126,7 +126,7 @@ module Kitchen
 						assert_equal '', `lxc image delete #{@subj.instance_variable_get(:@image)}`
 						assert_equal '', `lxc image list #{@subj.instance_variable_get(:@image)} --format csv`
 						@subj.init
-						assert_equal "alpine/3.6 (3 more)\n",
+						assert_equal "alpine/3.11 (3 more)\n",
 							`lxc image list #{@subj.instance_variable_get(:@image)} --format csv -c l`
 					end
 
